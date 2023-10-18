@@ -53,9 +53,8 @@ def cmap_fromLut(fname): # converts a .lut file given its path to a LinearSegmen
 
 
 def export_colormap(colormap, filename):
-    cmaplist = [colormap(i) for i in range(colormap.N)]
-    cmaplist[0] = (1.0,1.0,1.0,1.0)
-    colormap = matplotlib.colors.LinearSegmentedColormap.from_list('mcm',cmaplist, colormap.N)
+    cmaplist = [colormap(i) for i in range(0,colormap.N,4)]
+    colormap = matplotlib.colors.LinearSegmentedColormap.from_list('mcm',cmaplist, colormap.N/4)
 
     with open(filename, 'w') as file:
         file.write("WSxM file copyright UAM\n")
